@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>Spring-pratice-3-mvc-rest</groupId>
-	<artifactId>Spring-pratice-4-mvc-rest</artifactId>
+	<artifactId>Spring-pratice-44-mvc-rest</artifactId>
 	<version>0.0.1</version>
 	<packaging>war</packaging>
 	<build>
@@ -37,7 +37,7 @@
 			<groupId>cglib</groupId>
 			<artifactId>cglib</artifactId>
 			<version>2.2.2</version>
-		</dependency>				
+		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-beans</artifactId>
@@ -74,6 +74,17 @@
 			<version>1.2</version>
 		</dependency>
 		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>4.3.2.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>4.2.4.RELEASE</version>
+		</dependency>
+
+		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.38</version>
@@ -84,6 +95,6 @@
 			<version>2.6.5</version>
 		</dependency>
 
-		
+
 	</dependencies>
 </project>

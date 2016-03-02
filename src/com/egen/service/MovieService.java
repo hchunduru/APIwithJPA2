@@ -1,52 +1,35 @@
 package com.egen.service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.egen.dao.MovieDAO;
 import com.egen.entity.Movie;
 import com.egen.exceptionHandlers.BadRequestOnMovie;
 import com.egen.exceptionHandlers.MovieNotFoundException;
 
 @Service
 public class MovieService {
-	private Map<String,Movie> store;
+	
 	private String validateLength= "[0-9]+";
-	public MovieService()
-	{
-		store =new HashMap<String,Movie>();
-		Movie movie1 = new Movie();
-		Movie movie2 = new Movie();
-		
-		movie1.setmId("1");
-		movie1.setmName("Matrix");
-		movie1.setmLength("128");
-		movie1.setmDescription("Action Genre");
-		
-		movie2.setmId("2");
-		movie2.setmName("Love in Seattle");
-		movie2.setmLength("100");
-		movie2.setmDescription("Romance Genre");
-		
-		store.put(movie1.getmId(), movie1);
-		store.put(movie2.getmId(), movie2);
-		
-	}
+	
+	@Autowired
+	MovieDAO movieDAO;
 	
 	public List<Movie> findAllMovie()
 	{
-		List<Movie> movies = new ArrayList<Movie>(store.values()); 
+		List<Movie> movies = movieDAO.findAllMovie();
 		return movies;
 	}
 	
 	public Movie  findOneMovie(String id ) throws  MovieNotFoundException
 	{
-		if(store.containsKey(id))
+		Movie movie = movieDAO.findOneMovie(id);
+		if(movie != null)
 		{
-			return store.get(id);
+			return movie;
 		}
 		else
 		{
@@ -60,7 +43,7 @@ public class MovieService {
 		if(movie.getmLength().matches(validateLength))
 		{
 			
-			store.put(movie.getmId(), movie);
+			movieDAO.createMovie(movie);
 			return movie;
 		}
 		else
@@ -72,9 +55,10 @@ public class MovieService {
 	
 	public Movie update( String id ,Movie movie) throws MovieNotFoundException
 	{
-		if(store.containsKey(id))
+		Movie movie1 = movieDAO.findOneMovie(id);
+		if(movie1 != null)
 		{
-			return store.put(id, movie);
+			return movieDAO.update(movie);
 		}
 		else
 		{
@@ -85,9 +69,10 @@ public class MovieService {
 	
 	public Movie delete(String id ) throws MovieNotFoundException
 	{
-		if(store.containsKey(id))
+		Movie movie1 = movieDAO.findOneMovie(id);
+		if(movie1 != null)
 		{
-			return store.remove(id);
+			return movieDAO.delete(id);
 		}
 		else
 		{

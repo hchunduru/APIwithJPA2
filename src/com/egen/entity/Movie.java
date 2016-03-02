@@ -1,7 +1,14 @@
 package com.egen.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table
 public class Movie {
 
+	@Id
 	String mId;
 	String mName;
 	String mDescription;

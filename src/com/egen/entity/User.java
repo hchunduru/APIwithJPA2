@@ -1,9 +1,15 @@
 package com.egen.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+@Entity
+@Table
 public class User {
 
+	@Id
 	private String id;
 	private String fname;
 	private String lname;
