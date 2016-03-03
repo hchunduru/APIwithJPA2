@@ -40,7 +40,7 @@ public class JPAConfig {
 	public DataSource dataSource () {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/dbexample1_db");
+		dataSource.setUrl("jdbc:mysql://localhost:3306/spring_db1");
 		dataSource.setUsername("root");
 		dataSource.setPassword("1212Sophy");
 		return dataSource;
@@ -55,8 +55,8 @@ public class JPAConfig {
 	private Properties jpaProperties () {
 		Properties properties = new Properties();
 		properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-		properties.put("hibernate.show_sql", env.getProperty("hibernate.show.sql"));
-		properties.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl"));
+		properties.put("hibernate.show_sql", "true");
+		properties.put("hibernate.hbm2ddl.auto", "create-drop");
 		return properties;
 	}
 	
